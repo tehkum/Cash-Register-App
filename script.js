@@ -10,12 +10,12 @@ checkButton.addEventListener("click",function operationsCheck()
    
     if(billAmount.value > 0)
     {
-        if(billAmount.value >= cashAmount.value){
+        if(Number(billAmount.value) >= Number(cashAmount.value)){
             errorOperation("cash amount should be more");
         }else{
             var returnAmount = Number(cashAmount.value) - Number(billAmount.value);
             totalAmountOfChange(returnAmount);
-            console.log(typeof returnAmount)
+            // console.log(returnAmount);
         }
     } else{
         errorOperation("bill amount should be more than zero");
@@ -28,10 +28,10 @@ function errorOperation(msg){
 }
 function totalAmountOfChange(returnAmount){
     for(let i = 0; i < numMoney.length; i++){
-        var distributionAmount = Math.trunc(returnAmount.value / numMoney[i]);
+        var distributionAmount = Math.trunc(Number(returnAmount) / numMoney[i]);
         returnAmount = returnAmount%numMoney[i];
         noteNumber[i].innerText=  distributionAmount; 
-        console.log(typeof returnAmount)
+        console.log(distributionAmount);
     }
     
 }
